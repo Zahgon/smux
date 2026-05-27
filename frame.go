@@ -22,11 +22,6 @@
 
 package smux
 
-import (
-	"encoding/binary"
-	"fmt"
-)
-
 const ( // cmds
 	// protocol version 1:
 	cmdSYN byte = iota // stream open
@@ -68,39 +63,26 @@ type Frame struct {
 
 // newFrame creates a new frame with given version, command and stream id
 func newFrame(version byte, cmd byte, sid uint32) Frame {
-	return Frame{ver: version, cmd: cmd, sid: sid}
+	_ = "STUB: not implemented"
+	return *new(Frame)
 }
 
 // rawHeader is a byte array representation of Frame header
 type rawHeader [headerSize]byte
 
-func (h rawHeader) Version() byte {
-	return h[0]
-}
+func (h rawHeader) Version() byte { _ = "STUB: not implemented"; return 0 }
 
-func (h rawHeader) Cmd() byte {
-	return h[1]
-}
+func (h rawHeader) Cmd() byte { _ = "STUB: not implemented"; return 0 }
 
-func (h rawHeader) Length() uint16 {
-	return binary.LittleEndian.Uint16(h[2:])
-}
+func (h rawHeader) Length() uint16 { _ = "STUB: not implemented"; return 0 }
 
-func (h rawHeader) StreamID() uint32 {
-	return binary.LittleEndian.Uint32(h[4:])
-}
+func (h rawHeader) StreamID() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (h rawHeader) String() string {
-	return fmt.Sprintf("Version:%d Cmd:%d StreamID:%d Length:%d",
-		h.Version(), h.Cmd(), h.StreamID(), h.Length())
-}
+func (h rawHeader) String() string { _ = "STUB: not implemented"; return "" }
 
 // updHeader is a byte array representation of cmdUPD
 type updHeader [szCmdUPD]byte
 
-func (h updHeader) Consumed() uint32 {
-	return binary.LittleEndian.Uint32(h[:])
-}
-func (h updHeader) Window() uint32 {
-	return binary.LittleEndian.Uint32(h[4:])
-}
+func (h updHeader) Consumed() uint32 { _ = "STUB: not implemented"; return 0 }
+
+func (h updHeader) Window() uint32 { _ = "STUB: not implemented"; return 0 }
